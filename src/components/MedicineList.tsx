@@ -26,7 +26,7 @@ const MedicineList: React.FC<MedicineListProps> = ({ medicines, onSell }) => {
       alert('Medicine not found.');
     }
   };
-
+// to return data in table format
   return (
     <div>
       <h2>Sell Medicine</h2>
@@ -48,16 +48,47 @@ const MedicineList: React.FC<MedicineListProps> = ({ medicines, onSell }) => {
         />
         <button type="submit">Sell</button>
       </form>
-      <h3>Available Medicines</h3>
-      <ul>
-        {medicines.map((medicine) => (
-          <li key={medicine.id}>
-            {medicine.name} - Tsh. {medicine.price.toFixed(2)} (Stock: {medicine.stock})
-          </li>
-        ))}
-      </ul>
+
+      <h2>Available Medicine</h2>
+      <table border="1" cellPadding="10">
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          {medicines.map((medicine) => (
+            <tr key={medicine.id}>
+              <td>{medicine.id}</td>
+              <td>{medicine.name}</td>
+              <td>Tsh. {medicine.price}</td>
+              <td>{medicine.stock}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
+
+
+//TUMIA HII KURETURN DATA IN LIST Format
+
+  // return (
+  //   <div>
+  //     <h3>Available Medicines</h3>
+  //     <ul>
+  //       {medicines.map((medicine) => (
+  //         <li key={medicine.id}>
+  //           {medicine.name} - Tsh. {medicine.price.toFixed(2)} (Stock: {medicine.stock})
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   </div>
+  // );
+//};
 
 export default MedicineList;

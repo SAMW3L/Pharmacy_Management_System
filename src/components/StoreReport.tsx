@@ -44,18 +44,18 @@ const StoreReport: React.FC<StoreReportProps> = ({ medicines, sales }) => {
 
   const handlePrintPDF = () => {
     const doc = new jsPDF();
-    doc.text('Store Report', 14, 15);
+    doc.text('Store Report', 14, 15); //title ya document
     doc.autoTable({
       head: [['Medicine Name', 'Initial Balance', 'Current Balance', 'Profit/Loss']],
       body: reportData.map(item => [
         item.name,
         item.initialBalance,
         item.currentBalance,
-        `$${item.profitLoss.toFixed(2)}`
+        `Tsh. ${item.profitLoss.toFixed(2)}`
       ]),
       startY: 20
     });
-    doc.save('store-report.pdf');
+    doc.save('store-report.pdf'); //jina la document ukiwa unaisave
   };
 
   return (
@@ -97,7 +97,7 @@ const StoreReport: React.FC<StoreReportProps> = ({ medicines, sales }) => {
               <td>{item.name}</td>
               <td>{item.initialBalance}</td>
               <td>{item.currentBalance}</td>
-              <td>${item.profitLoss.toFixed(2)}</td>
+              <td>Tsh. {item.profitLoss.toFixed(2)}</td>
             </tr>
           ))}
         </tbody>
